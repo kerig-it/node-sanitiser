@@ -38,7 +38,7 @@ const sanitize = (pathname, replacement) => {
 
 	// Truncate `pathname` string to 4096 bytes.
 
-	truncate(pathname, 4096);
+	pathname = truncate(pathname, 4096);
 
 
 	// Define regular expressions.
@@ -70,16 +70,19 @@ const sanitize = (pathname, replacement) => {
 	}
 
 
-	// Define `sanitized variable.
+	// Define `sanitized` variable.
 
 	let sanitized = '';
 
 
-	// Loop over all pathname items
+	// Loop over all pathname items.
 
 	pathname.split('/').forEach(e => {
 
-		// Validate the item with previously defined regular expressions.
+		/*
+			Validate the item with previously defined regular expressions and append
+			it to the `sanitized` variable.
+		*/
 
 		sanitized += '/' + e
 
@@ -107,4 +110,4 @@ const sanitize = (pathname, replacement) => {
 
 // Export
 
-module.exports = sanitize();
+module.exports = sanitize;
