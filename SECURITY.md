@@ -1,6 +1,6 @@
 # Security Policy
 
-This is the security policy of `sanitise`. It is intended to provide you with information on how to report security vulnerabilities found within the code of this repository. Please find out below what versions of `sanitise` are supported for security updates.
+This is the security policy of `sanitiser`. It is intended to provide you with information on how to report security vulnerabilities found within the code of this repository. Please find out below what versions of `sanitise` are supported for security updates.
 
 # Supported Versions
 
@@ -10,7 +10,7 @@ This is the security policy of `sanitise`. It is intended to provide you with in
 
 # Reporting a Vulnerability
 
-You can report a security vulnerability in two ways, namely: file an issue on [our GitHub repository](https://https://github.com/kerig-it/sanitise/issues) or send an email to one of this repository contributors. If you chose the latter, you can choose from one of these email addresses:
+You can report a security vulnerability in two ways, namely: file an issue on [our GitHub repository](https://https://github.com/kerig-it/sanitiser/issues) or send an email to one of this repository contributors. If you chose the latter, you can choose from one of these email addresses:
 
  - @msfninja: <msfninja@pm.me>
 

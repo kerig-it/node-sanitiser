@@ -1,5 +1,5 @@
 {
-	"name": "sanitise",
+	"name": "sanitiser",
 	"version": "0.0.0-alpha.0",
 	"description": "Path name sanitiser.",
 	"main": "index.js",
@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kerig-it/sanitise.git"
+		"url": "git+https://github.com/kerig-it/sanitiser.git"
 	},
 	"keywords": [
 		"santise",
@@ -20,9 +20,9 @@
 	"author": "kerig",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/kerig-it/sanitise/issues"
+		"url": "https://github.com/kerig-it/sanitiser/issues"
 	},
-	"homepage": "https://github.com/kerig-it/sanitise#readme",
+	"homepage": "https://github.com/kerig-it/sanitiser#readme",
 	"dependencies": {
 		"truncate-utf8-bytes": "^1.0.2"
 	}
