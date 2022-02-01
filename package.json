@@ -1,27 +1,28 @@
 {
-	"name": "sanitize",
-	"version": "0.0.0-alpha.0-pre",
-	"description": "Path name sanitizer.",
+	"name": "sanitise",
+	"version": "0.0.0-alpha.0",
+	"description": "Path name sanitiser.",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kerig-it/sanitize.git"
+		"url": "git+https://github.com/kerig-it/sanitise.git"
 	},
 	"keywords": [
-		"santize",
+		"santise",
+		"sanitize",
 		"pathname",
 		"regex",
 		"validation"
 	],
-	"author": "msfninja",
+	"author": "kerig",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/kerig-it/sanitize/issues"
+		"url": "https://github.com/kerig-it/sanitise/issues"
 	},
-	"homepage": "https://github.com/kerig-it/sanitize#readme",
+	"homepage": "https://github.com/kerig-it/sanitise#readme",
 	"dependencies": {
 		"truncate-utf8-bytes": "^1.0.2"
 	}

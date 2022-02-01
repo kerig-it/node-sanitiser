@@ -1,3 +1,3 @@
-# sanitize
+# sanitise
 
-Path name sanitizer.
+Path name sanitiser.

@@ -1,8 +1,8 @@
 /*
-	A path name sanitizer.
+	A path name sanitiser.
 
 	Github:
-	https://github.com/kerig-it/sanitize
+	https://github.com/kerig-it/sanitise
 */
 
 
@@ -13,7 +13,7 @@ const truncate = require('truncate-utf8-bytes');
 
 // Sanitizer
 
-const sanitize = (pathname, replacement) => {
+const sanitise = (pathname, replacement) => {
 
 	// Is `pathname` not a string?
 
@@ -70,9 +70,9 @@ const sanitize = (pathname, replacement) => {
 	}
 
 
-	// Define `sanitized` variable.
+	// Define `sanitised` variable.
 
-	let sanitized = '';
+	let sanitised = '';
 
 
 	// Loop over all pathname items.
@@ -81,10 +81,10 @@ const sanitize = (pathname, replacement) => {
 
 		/*
 			Validate the item with previously defined regular expressions and append
-			it to the `sanitized` variable.
+			it to the `sanitised` variable.
 		*/
 
-		sanitized += '/' + e
+		sanitised += '/' + e
 
 			// Replace illegal characters.
 
@@ -104,10 +104,10 @@ const sanitize = (pathname, replacement) => {
 
 	// Return the modified string of the pathname.
 
-	return sanitized;
+	return sanitised;
 };
 
 
 // Export
 
-module.exports = sanitize;
+module.exports = sanitise;

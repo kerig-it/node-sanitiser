@@ -2,7 +2,7 @@
 
 Notable changes to this project will be documented in this file.
 
-## v0.0.0-alpha.0-pre, 2021-01-25, @msfninja
+## v0.0.0-alpha.0, 2022-02-01, @msfninja
 
 ### Notes
 
