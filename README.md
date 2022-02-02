@@ -1,9 +1,9 @@
 <h1 align="center">Sanitiser</h1>
 
-`sanitiser` is a path name sanitiser. It's based off the
+`sanitiser` is a path name sanitiser. It's based off of the
 [`sanitize-filename`](https://github.com/parshap/node-sanitize-filename)
-package, but accepts directory separators such as `/`, making it
-viable for sanitising path names.
+package, but accepts directory separators such as `/` and `\`, making
+it viable to sanitise path names, as well as filenames.
 
 <table>
 	<tr>
@@ -21,6 +21,14 @@ viable for sanitising path names.
 				<li>
 					<a href="#usage">Usage</a>
 				</li>
+				<ul>
+					<li>
+						<a href="#importing">Importing</a>
+					</li>
+					<li>
+						<a href="#sanitising">Sanitising</a>
+					</li>
+				</ul>
 				<li>
 					<a href="#support">Support</a>
 				</li>
@@ -83,9 +91,30 @@ The second parameter is a string that you would like the illegal
 characters be replaced with. In case you don't supply a replacer, the
 illegal characters in the `pathname` string will simply be removed.
 
+Below are all regular expressions that are used in sanitising a path
+name.
+
+**Illegal characters:**
+
+```js
+/[\?<>:\*\|"]/g
+```
+
+**Control characters:**
+
+```js
+/[\x00-\x1f\x80-\x9f]/g
+```
+
+**Relative paths:**
+
+```js
+/^\.+$/
+```
+
 Before the regular expression will be applied to the supplied path
-name, though, `pathname` will be truncated to 4096 bytes with the aid
-of the [`truncate-utf8-bytes`](https://github.com/parshap/truncate-utf8-bytes)
+name, though, `pathname` will be [truncated to 4096 bytes](https://unix.stackexchange.com/a/32834)
+with the aid of the [`truncate-utf8-bytes`](https://github.com/parshap/truncate-utf8-bytes)
 package.
 
 The `sanitiser` function returns a string representing the sanitised
