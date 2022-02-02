@@ -6,8 +6,8 @@ Notable changes to this project will be documented in this file.
 
 ### Notes
 
-This pre-release comes with documentation and improved, more readable
-code style. In several files each line has been reduced to 70
+This pre-release comes with documentation and an improved more readable
+code style. In several files, each line has been reduced to 70
 characters or less, if possible.
 
 ### Added
