@@ -2,6 +2,26 @@
 
 Notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Notes
+
+Support for the Windows directory separator `\` has been added.
+
+### Added
+
+ - [`f3ca2f2`](https://github.com/kerig-it/sanitiser/commit/f3ca2f276c4fa2da2133dba702a0d32d53ddf97a):
+ **Update `index.js`**: Add allowance for Windows directory separators
+ `\`.
+
+### Changed
+
+ - [`fedcdc4`](https://github.com/kerig-it/sanitiser/commit/fedcdc40182802b0e3aefd4a6428c308c0f69d61):
+ **Update `README.md`**:
+   * Add `\` directory separator.
+   * Add regular expression code snippets.
+   * Add hyperlink to path name truncation.
+
 ## v0.0.0-beta.0, 2022-02-02, [@msfninja](https://github.com/msfninja)
 
 ### Notes
