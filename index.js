@@ -48,7 +48,7 @@ const sanitise = (pathname, replacement) => {
 
 	let
 		// Illegal characters
-		illegal = /[\?<>\\:\*\|"]/g,
+		illegal = /[\?<>:\*\|"]/g,
 
 		// Control characters
 		control = /[\x00-\x1f\x80-\x9f]/g,
