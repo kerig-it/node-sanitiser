@@ -1,0 +1,10 @@
+/path/to/file
+/path/to/file/
+path/to/file/
+path/to/file
+/path./to/file
+/.path/to/file
+path./to/file/
+/path./to/file
+/../path/to/file
+/path/../to/file
