@@ -6,13 +6,17 @@ Notable changes to this project will be documented in this file.
 
 ### Notes
 
-Support for the Windows directory separator `\` has been added.
+The `sanitise` function accepts a third parameter&#8212;`options`. Support for the Windows directory separator `\` has been added as well.
 
 ### Added
 
  - [`f3ca2f2`](https://github.com/kerig-it/sanitiser/commit/f3ca2f276c4fa2da2133dba702a0d32d53ddf97a):
  **Update `index.js`**: Add allowance for Windows directory separators
  `\`.
+ - [`fa8cfcf`](https://github.com/kerig-it/sanitiser/commit/fa8cfcfcfc7a48bccf9f29b221d3998e42d16455):
+ **Update index.js**:
+   * Add `options` parameter to `sanitise()` function.
+   * Add `checkOptions()` function for validating supplied options.
 
 ### Changed
 
@@ -26,9 +30,9 @@ Support for the Windows directory separator `\` has been added.
 
 ### Notes
 
-This pre-release comes with documentation and an improved more readable
-code style. In several files, each line has been reduced to 70
-characters or less, if possible.
+This pre-release comes with documentation and an improved more
+readable code style. In several files, each line has been reduced to
+70 characters or less, if possible.
 
 ### Added
 
