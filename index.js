@@ -25,7 +25,7 @@ let allowedOptions = [
 const checkOptions = object => {
 
 	// Is `object` an object?
-	if (typeof(objext) === 'object') {
+	if (typeof(object) === 'object') {
 		
 		// Loop over all object properties.
 		for (const property in object) {
@@ -50,7 +50,15 @@ const checkOptions = object => {
 const sanitise = (pathname, replacement, options) => {
 
 	// Are any options supplied?
-	if (options) {
+	if (options || (typeof(replacement) === 'object' && !options)) {
+
+		// Is the `replacement` not supplied but `options` are?
+		if (typeof(replacement) === 'object' && !options) {
+			// Reassign arguments.
+			options = replacement;
+			replacement = '';
+		}
+
 		// Validate the supplied options.
 		checkOptions(options);
 	}
