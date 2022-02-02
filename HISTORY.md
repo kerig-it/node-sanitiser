@@ -17,6 +17,9 @@ The `sanitise` function accepts a third parameter&#8212;`options`. Support for t
  **Update index.js**:
    * Add `options` parameter to `sanitise()` function.
    * Add `checkOptions()` function for validating supplied options.
+ - [`b4a5b04`](https://github.com/kerig-it/sanitiser/commit/b4a5b0459d67d4a4f5b6014ea148a32a5404aec6):
+ **Update README.md**: Add documentation for `options` parameter in
+ the `sanitise()` function.
 
 ### Changed
 
