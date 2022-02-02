@@ -23,12 +23,21 @@ it viable to sanitise path names, as well as filenames.
 				</li>
 				<ul>
 					<li>
+						<a href="#syntax">Syntax</a>
+					</li>
+					<li>
 						<a href="#importing">Importing</a>
 					</li>
 					<li>
 						<a href="#sanitising">Sanitising</a>
 					</li>
 				</ul>
+				<li>
+					<a href="#examples">Examples</a>
+				</li>
+				<li>
+					<a href="#testing">Testing</a>
+				</li>
 				<li>
 					<a href="#support">Support</a>
 				</li>
@@ -58,6 +67,21 @@ This will add `sanitiser` in your dependancies in your [`package.json`](https://
 file.
 
 # Usage
+
+## Syntax
+
+```plain
+sanitiser(pathname[, replacement], options);
+```
+
+ - `pathname` \<string\> Path
+ - `replacement` \<string\> Replacer in `replace()`
+ - `options` \<Object\>
+   * `ignoreControl` \<boolean\> **Default**: `false`
+   * `ignoreIllegal` \<boolean\> **Default**: `false`
+   * `ignoreRelative` \<boolean\> **Default**: `false`
+
+[More information in Sanitising](#sanitising).
 
 ## Importing
 
@@ -128,6 +152,31 @@ package.
 
 The `sanitiser` function returns a string representing the sanitised
 path name.
+
+# Examples
+
+In the example below, a path name is being sanitised.
+
+```js
+const sanitiser = require('sanitiser');
+
+let pathanme = '/some/../arbitrary/./path/*';
+let sanitised = sanitiser(pathname);
+
+console.log(sanitsed);
+// Expected output: //some//arbitrary//path/
+```
+
+# Testing
+
+To test the sanitiser, you can issue the below command in your shell,
+given you are in the relevant working directory.
+
+```bash
+npm test
+```
+
+This will run a test of the package.
 
 # Support
 
