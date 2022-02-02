@@ -85,9 +85,9 @@ const sanitiser = require('sanitiser');
 |---|---|---|---|
 |`pathname`|String|Yes|Holds the path name that has to be sanitised.|
 |`replacement`|String|No|Holds a string that illegal characters in `pathname` will be replaced with.|
-|[`options`](#options-object)|Object|No|Holds an object with proprties that can configure the behaviour of the `sanitise()` function.|
+|[`options`](#options-parameter)|Object|No|Holds an object with proprties that can configure the behaviour of the `sanitise()` function.|
 
-<b id="options-object">`options` object</b>
+<b id="options-parameter">`options` parameter</b>
 
 |Property|Type|Description|
 |---|---|---|
