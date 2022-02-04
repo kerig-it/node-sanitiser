@@ -2,7 +2,7 @@
 
 Notable changes to this project will be documented in this file.
 
-## Unreleased
+## v0.0.0-beta.1, 2022-02-04, [@msfninja](https://github.com/msfninja)
 
 ### Notes
 
