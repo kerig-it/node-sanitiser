@@ -35,9 +35,9 @@ it viable to sanitise path names, as well as filenames.
 				<li>
 					<a href="#examples">Examples</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="#testing">Testing</a>
-				</li>
+				</li> -->
 				<li>
 					<a href="#support">Support</a>
 				</li>
@@ -167,7 +167,7 @@ console.log(sanitsed);
 // Expected output: //some//arbitrary//path/
 ```
 
-# Testing
+<!-- # Testing
 
 To test the sanitiser, you can issue the below command in your shell,
 given you are in the relevant working directory.
@@ -176,7 +176,7 @@ given you are in the relevant working directory.
 npm test
 ```
 
-This will run a test of the package.
+This will run a test of the package. -->
 
 # Support
 
