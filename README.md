@@ -23,12 +23,21 @@ it viable to sanitise path names, as well as filenames.
 				</li>
 				<ul>
 					<li>
+						<a href="#syntax">Syntax</a>
+					</li>
+					<li>
 						<a href="#importing">Importing</a>
 					</li>
 					<li>
 						<a href="#sanitising">Sanitising</a>
 					</li>
 				</ul>
+				<li>
+					<a href="#examples">Examples</a>
+				</li>
+				<li>
+					<a href="#testing">Testing</a>
+				</li>
 				<li>
 					<a href="#support">Support</a>
 				</li>
@@ -59,6 +68,21 @@ file.
 
 # Usage
 
+## Syntax
+
+```plain
+sanitiser(pathname[, replacement], options);
+```
+
+ - `pathname` \<string\> Path
+ - `replacement` \<string\> Replacer in `replace()`
+ - `options` \<Object\>
+   * `ignoreControl` \<boolean\> **Default**: `false`
+   * `ignoreIllegal` \<boolean\> **Default**: `false`
+   * `ignoreRelative` \<boolean\> **Default**: `false`
+
+[More information in Sanitising](#sanitising).
+
 ## Importing
 
 To use the `sanitiser` package in your project/code, you can add it
@@ -79,12 +103,21 @@ const sanitiser = require('sanitiser');
 
 ## Sanitising
 
-`sanitiser` is a function that accepts two arguments.
+`sanitiser` is a function that accepts three arguments.
 
 |Parameter|Type|Mandatory|Description|
 |---|---|---|---|
 |`pathname`|String|Yes|Holds the path name that has to be sanitised.|
 |`replacement`|String|No|Holds a string that illegal characters in `pathname` will be replaced with.|
+|[`options`](#options-parameter)|Object|No|Holds an object with proprties that can configure the behaviour of the `sanitise()` function.|
+
+<b id="options-parameter">`options` parameter</b>
+
+|Property|Type|Description|
+|---|---|---|
+|`ignoreControl`|Boolean|Defines whether or not apply [the control characters regular expression](#control-characters).|
+|`ignoreIllegal`|Boolean|Defines whether or not apply [the illegal characters regular expression](#illegal-characters).|
+|`ignoreRelative`|Boolean|Defines whether or not apply [the relative paths regular expression](#relative-paths).|
 
 The first parameter is the actual path name that you want to sanitise.
 The second parameter is a string that you would like the illegal
@@ -94,19 +127,19 @@ illegal characters in the `pathname` string will simply be removed.
 Below are all regular expressions that are used in sanitising a path
 name.
 
-**Illegal characters:**
-
-```js
-/[\?<>:\*\|"]/g
-```
-
-**Control characters:**
+<b id="control-characters">Control characters:</b>
 
 ```js
 /[\x00-\x1f\x80-\x9f]/g
 ```
 
-**Relative paths:**
+<b id="illegal-characters">Illegal characters:</b>
+
+```js
+/[\?<>:\*\|"]/g
+```
+
+<b id="relative-paths">Relative paths:</b>
 
 ```js
 /^\.+$/
@@ -119,6 +152,31 @@ package.
 
 The `sanitiser` function returns a string representing the sanitised
 path name.
+
+# Examples
+
+In the example below, a path name is being sanitised.
+
+```js
+const sanitiser = require('sanitiser');
+
+let pathanme = '/some/../arbitrary/./path/*';
+let sanitised = sanitiser(pathname);
+
+console.log(sanitsed);
+// Expected output: //some//arbitrary//path/
+```
+
+# Testing
+
+To test the sanitiser, you can issue the below command in your shell,
+given you are in the relevant working directory.
+
+```bash
+npm test
+```
+
+This will run a test of the package.
 
 # Support
 
