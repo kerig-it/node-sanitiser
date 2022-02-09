@@ -10,15 +10,16 @@ updates.
 
 |Version|Supported|
 |---|---|
-|0.0.0-beta.x (Current)|Yes|
+|0.0.x (Current)|Yes|
+|0.0.0-beta.x|No|
 |0.0.0-alpha.x|No|
 
 In general, any pre-release will cease support for security updates as
-soon as its successorial pre-release is published. Releases meant for
-use in production environments are usually always subject for
-security updates may there be a necessity, unless there's a specific
-reason for that to not to be the case. A concise explanation of such
-lack of support can be found below.
+soon as its successorial release or pre-release is published.
+Releases meant for use in production environments are usually always
+subject for security updates may there be a necessity, unless there's
+a specific reason for that to not to be the case. A concise
+explanation of such lack of support can be found below.
 
 # Reporting a Vulnerability
 
