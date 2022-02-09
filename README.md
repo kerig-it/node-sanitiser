@@ -35,9 +35,9 @@ it viable to sanitise path names, as well as filenames.
 						<a href="#examples">Examples</a>
 					</li>
 				</ul>
-				<!-- <li>
+				<li>
 					<a href="#testing">Testing</a>
-				</li> -->
+				</li>
 				<li>
 					<a href="#support">Support</a>
 				</li>
@@ -76,13 +76,13 @@ sanitiser(pathname[, options, callback]);
 
  - `pathname` \<string\> Path
  - `options` \<Object\>
-  * `ignoreControl` \<boolean\> **Default**: `false`
-  * `ignoreIllegal` \<boolean\> **Default**: `false`
-  * `ignoreRelative` \<boolean\> **Default**: `false`
-  * `replacement` \<string\> Replacer in `replace()`
+   * `ignoreControl` \<boolean\> **Default**: `false`
+   * `ignoreIllegal` \<boolean\> **Default**: `false`
+   * `ignoreRelative` \<boolean\> **Default**: `false`
+   * `replacement` \<string\> Replacer in `replace()`
  - `callback` \<Function\>
-  * `error` \<boolean\> | \<Error\> `false` if no error
-  * `result` \<string\> Sanitised path
+   * `error` \<boolean\> | \<Error\> `false` if no error
+   * `result` \<string\> Sanitised path
 
 [More information in Sanitising](#sanitising).
 
@@ -90,7 +90,7 @@ sanitiser(pathname[, options, callback]);
 
 To use the `sanitiser` package in your project/code, you can add it
 using [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-or [`require()`](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
+or [`require`](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
 
 **`import`**:
 
@@ -98,7 +98,7 @@ or [`require()`](https://nodejs.org/en/knowledge/getting-started/what-is-require
 import sanitiser from 'sanitiser';
 ```
 
-**`require()`:**
+**`require`:**
 
 ```js
 const sanitiser = require('sanitiser');
@@ -111,7 +111,7 @@ const sanitiser = require('sanitiser');
 |Parameter|Type|Mandatory|Description|
 |---|---|---|---|
 |`pathname`|String|Yes|Holds the path name that has to be sanitised.|
-|[`options`](#options-parameter)|Object|No|Holds an object with proprties that can configure the behaviour of the `sanitise()` function.|
+|[`options`](#options-parameter)|Object|No|Holds an object with proprties that can configure the behaviour of the `sanitise` function.|
 |[`callback`](#callback-parameter)|Function|No|Holds a callback function that will be executed when `pathname` is sanitised.|
 
 <b id="options-parameter">`options` parameter</b>
@@ -208,7 +208,7 @@ sanitiser(pathname, { ignoreRelative: true }, (error, result) => {
 });
 ```
 
-<!-- # Testing
+# Testing
 
 To test the sanitiser, you can issue the below command in your shell,
 given you are in the relevant working directory.
@@ -217,7 +217,7 @@ given you are in the relevant working directory.
 npm test
 ```
 
-This will run a test of the package. -->
+This will run a test of the package.
 
 # Support
 
