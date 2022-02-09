@@ -2,11 +2,32 @@
 
 Notable changes to this project will be documented in this file.
 
+## v0.0.0, 2022-02-09, [@msfninja](https://github.com/msfninja)
+
+### Notes
+
+The `sanitise` function now supports passing a callback as an
+argument.
+
+### Added
+
+ - [96b578b](https://github.com/kerig-it/sanitiser/commit/96b578bf1bb9852f1cd5c3611e4ccb9927bb6c0d):
+ **Update `index.js`**:
+  * Add `callback` parameter to `sanitise`.
+  * Change the string build-up inside the forEach loop.
+  * Remove `checkOptions`.
+ - [08693df](https://github.com/kerig-it/sanitiser/commit/08693dfb9c91f3bb94fd831ab9dd051d31256e96):
+ **Update `README.md`**:
+  * Add documentation for the new parameter configuration in `sanitise`.
+  * Add more examples.
+
 ## v0.0.0-beta.1, 2022-02-04, [@msfninja](https://github.com/msfninja)
 
 ### Notes
 
-The `sanitise` function accepts a third parameter&#8212;`options`. Support for the Windows directory separator `\` has been added as well.
+The `sanitise` function accepts a third parameter&#8212;`options`.
+Support for the Windows directory separator `\` has been added as
+well.
 
 ### Added
 
