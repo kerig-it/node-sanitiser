@@ -14,53 +14,17 @@
 // terminal to install all dependancies).
 const truncate = require('truncate-utf8-bytes');
 
-// Define allowed options.
-let allowedOptions = [
-	'ignoreControl',
-	'ignoreIllegal',
-	'ignoreRelative'
-];
-
-// Options validator
-const checkOptions = object => {
-
-	// Is `object` an object?
-	if (typeof(object) === 'object') {
-		
-		// Loop over all object properties.
-		for (const property in object) {
-
-			// Is the property not one of the allowed options?
-			if (!allowedOptions.includes(property)) {
-				// Throw an error.
-				throw new Error(`The ${property} property is invalid.`);
-			}
-		}
-
-		// Return a successful status.
-		return true;
-	}
-
-	// Throw an error.
-	throw new Error('The \`options\` argument must of type object.');
-};
-
-
 // Sanitiser
-const sanitise = (pathname, replacement, options) => {
+const sanitise = (pathname, options, callback) => {
 
-	// Are any options supplied?
-	if (options || (typeof(replacement) === 'object' && !options)) {
+	// Define custom internal error.
+	let internalError = false;
 
-		// Is the `replacement` not supplied but `options` are?
-		if (typeof(replacement) === 'object' && !options) {
-			// Reassign arguments.
-			options = replacement;
-			replacement = '';
-		}
-
-		// Validate the supplied options.
-		checkOptions(options);
+	// Are `options` not supplied but `callback` is?
+	if ((typeof(options) === 'function' && !callback)) {
+		// Reassign arguments.
+		callback = options;
+		options = {};
 	}
 
 	// Is `pathname` not a string?
@@ -74,7 +38,7 @@ const sanitise = (pathname, replacement, options) => {
 		catch (error) {
 			// If there was an error in converting the supplied
 			// `pathname` argument to a string, throw an error.
-			throw new Error('Passed argument must be of type string.');
+			internalError = new Error('\`pathname\` must be of type string.');
 		}
 	}
 
@@ -92,10 +56,13 @@ const sanitise = (pathname, replacement, options) => {
 		// Relative paths
 		relative = /^\.+$/;
 
+	// Define a replacer.
+	let replacement = '';
+
 	// Was a replacer not set?
-	if (!replacement) {
+	if (options && options.replacement) {
 		// Set the replacer to empty an string.
-		replacement = '';
+		replacement = options.replacement;
 	}
 
 	// Define the `sanitised` variable. This will eventually be
@@ -109,23 +76,31 @@ const sanitise = (pathname, replacement, options) => {
 		// expressions and append it to the `sanitised` variable.
 
 		// Is `ignoreControl` disabled?
-		if (!options.ignoreControl) {
+		if (!options?.ignoreControl) {
 			// Replace control characters.
-			sanitised += '/' + e.replace(control, replacement);
+			e = e.replace(control, replacement);
 		}
 
 		// Is `ignoreIllegal` disabled?
-		if (!options.ignoreIllegal) {
+		if (!options?.ignoreIllegal) {
 			// Replace illegal characters.
-			sanitised += '/' + e.replace(illegal, replacement);
+			e = e.replace(illegal, replacement);
 		}
 
 		// Is `ignoreRelative` disabled?
-		if (!options.ignoreRelative) {
+		if (!options?.ignoreRelative) {
 			// Replace attempts to make a relative path.
-			sanitised += '/' + e.replace(relative, replacement);
+			e = e.replace(relative, replacement);
 		}
+
+		sanitised += `/${e}`;
 	});
+
+	// Is there a callback?
+	if (callback) {
+		// Call the callback function with 2 arguments.
+		return callback(internalError, sanitised);
+	}
 
 	// Return the modified string of the pathname.
 	return sanitised;
