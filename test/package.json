@@ -1,0 +1,5 @@
+{
+	"dependancies": {
+		"sanitiser": "file:.."
+	}
+}
