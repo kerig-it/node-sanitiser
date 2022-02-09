@@ -31,10 +31,10 @@ it viable to sanitise path names, as well as filenames.
 					<li>
 						<a href="#sanitising">Sanitising</a>
 					</li>
+					<li>
+						<a href="#examples">Examples</a>
+					</li>
 				</ul>
-				<li>
-					<a href="#examples">Examples</a>
-				</li>
 				<!-- <li>
 					<a href="#testing">Testing</a>
 				</li> -->
@@ -71,15 +71,18 @@ file.
 ## Syntax
 
 ```plain
-sanitiser(pathname[, replacement], options);
+sanitiser(pathname[, options, callback]);
 ```
 
  - `pathname` \<string\> Path
- - `replacement` \<string\> Replacer in `replace()`
  - `options` \<Object\>
-   * `ignoreControl` \<boolean\> **Default**: `false`
-   * `ignoreIllegal` \<boolean\> **Default**: `false`
-   * `ignoreRelative` \<boolean\> **Default**: `false`
+  * `ignoreControl` \<boolean\> **Default**: `false`
+  * `ignoreIllegal` \<boolean\> **Default**: `false`
+  * `ignoreRelative` \<boolean\> **Default**: `false`
+  * `replacement` \<string\> Replacer in `replace()`
+ - `callback` \<Function\>
+  * `error` \<boolean\> | \<Error\> `false` if no error
+  * `result` \<string\> Sanitised path
 
 [More information in Sanitising](#sanitising).
 
@@ -108,8 +111,8 @@ const sanitiser = require('sanitiser');
 |Parameter|Type|Mandatory|Description|
 |---|---|---|---|
 |`pathname`|String|Yes|Holds the path name that has to be sanitised.|
-|`replacement`|String|No|Holds a string that illegal characters in `pathname` will be replaced with.|
 |[`options`](#options-parameter)|Object|No|Holds an object with proprties that can configure the behaviour of the `sanitise()` function.|
+|[`callback`](#callback-parameter)|Function|No|Holds a callback function that will be executed when `pathname` is sanitised.|
 
 <b id="options-parameter">`options` parameter</b>
 
@@ -118,6 +121,14 @@ const sanitiser = require('sanitiser');
 |`ignoreControl`|Boolean|Defines whether or not apply [the control characters regular expression](#control-characters).|
 |`ignoreIllegal`|Boolean|Defines whether or not apply [the illegal characters regular expression](#illegal-characters).|
 |`ignoreRelative`|Boolean|Defines whether or not apply [the relative paths regular expression](#relative-paths).|
+|`replacement`|String|Holds a string that illegal characters in `pathname` will be replaced with.|
+
+<b id="callback-parameter">`callback` parameter</b>
+
+|Parameter|Type|Description|
+|---|---|---|
+|`error`|Boolean/Error|Is `false` if there is no error, and an `Error` instance upon errors.|
+|`result`|String|Holds the sanitised path name.|
 
 The first parameter is the actual path name that you want to sanitise.
 The second parameter is a string that you would like the illegal
@@ -153,9 +164,9 @@ package.
 The `sanitiser` function returns a string representing the sanitised
 path name.
 
-# Examples
+## Examples
 
-In the example below, a path name is being sanitised.
+Sanitised path name assigment to a variable.
 
 ```js
 const sanitiser = require('sanitiser');
@@ -165,6 +176,36 @@ let sanitised = sanitiser(pathname);
 
 console.log(sanitsed);
 // Expected output: //some//arbitrary//path/
+```
+
+Sanitised path name output via a callback.
+
+```js
+const sanitiser = require('sanitiser');
+
+let pathanme = '/some/../arbitrary/./path/*';
+
+sanitiser(pathname, (error, result) => {
+	if (error) throw error;
+
+	console.log(result);
+	// Expected output: //some//arbitrary//path/
+});
+```
+
+Sanitised path name with `ignoreRelative` enabled output via a callback.
+
+```js
+const sanitiser = require('sanitiser');
+
+let pathanme = '/some/../arbitrary/./path/*';
+
+sanitiser(pathname, { ignoreRelative: true }, (error, result) => {
+	if (error) throw error;
+
+	console.log(result);
+	// Expected output: /some/../arbitrary/./path/
+});
 ```
 
 <!-- # Testing
