@@ -1,6 +1,6 @@
 {
 	"name": "sanitiser",
-	"version": "0.0.0-beta.1",
+	"version": "0.0.0",
 	"description": "Path name sanitiser.",
 	"main": "index.js",
 	"scripts": {
