@@ -20,6 +20,8 @@ argument.
  **Update `README.md`**:
   * Add documentation for the new parameter configuration in `sanitise`.
   * Add more examples.
+ - [a887f0f](https://github.com/kerig-it/sanitiser/commit/a887f0f6c07fed8cc2af45fc0b93df854051d75e):
+ **Update `test.js`**: [Add package testing].
 
 ## v0.0.0-beta.1, 2022-02-04, [@msfninja](https://github.com/msfninja)
 
