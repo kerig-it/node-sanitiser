@@ -2,7 +2,7 @@
 	<span>Sanitiser</span>
 	<br />
 	<span>
-		<img src="https://github.com/kerig-it/node-sanitiser/actions/workflows/codeql-analysis.yml/badge.svg" />
+		<a href="https://github.com/kerig-it/node-sanitiser/actions/workflows/codeql-analysis.yml"><img src="https://github.com/kerig-it/node-sanitiser/actions/workflows/codeql-analysis.yml/badge.svg" /></a>
 	</span>
 </h1>
 
