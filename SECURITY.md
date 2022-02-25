@@ -22,6 +22,6 @@ You can report a security vulnerability in two ways, namely by filing an issue o
 
 You can also send an e-mail to our company's official e-mail address&#8212;<kerigit@outlook.com>.
 
-We will get our hands on your denoted security issue a1s soon as possible, depending on the severity of the vulnerability. If the vulnerability is of critical severity, we will also make sure to publish the release containing the patch as soon as possible.
+We will get our hands on your denoted security issue as soon as possible, depending on the severity of the vulnerability. If the vulnerability is of critical severity, we will also make sure to publish the release containing the patch as soon as possible.
 
 Have any further questions or ran into issues? Don't hesitate to [get in touch with us](https://support.kerig.ee).
