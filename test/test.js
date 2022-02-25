@@ -16,6 +16,32 @@ const
 	fs = require('fs'),
 	sanitiser = require('sanitiser');
 
+// "Buffer", represnting a string.
+let buffer = '';
+
+// Prints formatted text to the console.
+const print = (...array) => {
+
+	// Formatting variables
+	let ws = '';
+
+	for (var i = 39; i >= 0; i--) {
+		ws += ' ';
+	}
+	
+	array.forEach(element => {
+
+		// Is the supplied string not a white space character?
+		if (element.match(/[^\s]/)) {
+			// Reformat the supplied string.
+			element = (element + ws).slice(0, 40);
+		}
+
+		// Append the formatted string to the buffer.
+		buffer += element;
+	});
+};
+
 // Read the `paths` file.
 let paths = fs.readFile('paths', (error, data) => {
 
@@ -24,10 +50,14 @@ let paths = fs.readFile('paths', (error, data) => {
 		throw error;
 	}
 
+	print('Supplied', 'Sanitised', '\n');
+
 	// Loop over all path names.
 	data.toString().split('\n').forEach(pathname => {
 		// Log "before" and "after" the sanitisation of the path name.
-		console.log(`Supplied:  ${pathname}`);
-		console.log(`Sanitised: ${sanitiser(pathname)}\n`);
+		print(pathname, sanitiser(pathname), '\n');
 	});
+
+	// Log the buffer to the console.
+	console.log(buffer);
 });
