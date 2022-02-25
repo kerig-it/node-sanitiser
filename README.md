@@ -46,13 +46,13 @@ it viable to sanitise path names, as well as filenames.
 	</tr>
 </table>
 
-# Notice
+## Notice
 
 This repository is licenced under the [MIT licence](https://mit-license.org/).
 For a full picture of your rights and responsibilities, refer to the
 licence file in the root directory of this repository ([`LICENCE`](/LICENCE)).
 
-# Installing
+## Installing
 
 This package is a [node package](https://nodejs.org/api/packages.html#modules-packages).
 To install it using [npm](https://npmjs.org) (Node package manager),
@@ -66,9 +66,9 @@ npm i sanitiser
 This will add `sanitiser` in your dependancies in your [`package.json`](https://nodejs.dev/learn/the-package-json-guide)
 file.
 
-# Usage
+## Usage
 
-## Syntax
+### Syntax
 
 ```plain
 sanitiser(pathname[, options, callback]);
@@ -86,7 +86,7 @@ sanitiser(pathname[, options, callback]);
 
 [More information in Sanitising](#sanitising).
 
-## Importing
+### Importing
 
 To use the `sanitiser` package in your project/code, you can add it
 using [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
@@ -104,7 +104,7 @@ import sanitiser from 'sanitiser';
 const sanitiser = require('sanitiser');
 ```
 
-## Sanitising
+### Sanitising
 
 `sanitiser` is a function that accepts three arguments.
 
@@ -116,12 +116,13 @@ const sanitiser = require('sanitiser');
 
 <b id="options-parameter">`options` parameter</b>
 
-|Property|Type|Description|
-|---|---|---|
-|`ignoreControl`|Boolean|Defines whether or not apply [the control characters regular expression](#control-characters).|
-|`ignoreIllegal`|Boolean|Defines whether or not apply [the illegal characters regular expression](#illegal-characters).|
-|`ignoreRelative`|Boolean|Defines whether or not apply [the relative paths regular expression](#relative-paths).|
-|`replacement`|String|Holds a string that illegal characters in `pathname` will be replaced with.|
+|Property|Type|Default|Description|
+|---|---|---|---|
+|`ignoreControl`|Boolean|`false`|Defines whether or not to apply [the control characters regular expression](#control-characters).|
+|`ignoreIllegal`|Boolean|`false`|Defines whether or not to apply [the illegal characters regular expression](#illegal-characters).|
+|`ignoreRelative`|Boolean|`false`|Defines whether or not to apply [the relative paths regular expression](#relative-paths).|
+|`noTruncation`|Boolean|`false`|Defines whether or not to [truncate the path name to 4096 bytes](https://unix.stackexchange.com/a/32834).|
+|`replacement`|String|Empty string|Holds a string that illegal characters in `pathname` will be replaced with.|
 
 <b id="callback-parameter">`callback` parameter</b>
 
@@ -130,10 +131,12 @@ const sanitiser = require('sanitiser');
 |`error`|Boolean/Error|Is `false` if there is no error, and an `Error` instance upon errors.|
 |`result`|String|Holds the sanitised path name.|
 
-The first parameter is the actual path name that you want to sanitise.
-The second parameter is a string that you would like the illegal
-characters be replaced with. In case you don't supply a replacer, the
-illegal characters in the `pathname` string will simply be removed.
+So, the first parameter is the actual string representing the path
+that you would like to sanitise. The second parameter is an object
+where you can supply specific options to alter the behaviour of the
+`sanitise` function. The third parameter is a callback function with
+two parameters of its own that will be executed once the path name is
+sanitised.
 
 Below are all regular expressions that are used in sanitising a path
 name.
@@ -159,23 +162,24 @@ name.
 Before the regular expression will be applied to the supplied path
 name, though, `pathname` will be [truncated to 4096 bytes](https://unix.stackexchange.com/a/32834)
 with the aid of the [`truncate-utf8-bytes`](https://github.com/parshap/truncate-utf8-bytes)
-package.
+package. It is possible to not truncate the path name by supplying the
+`noTruncation` option being set to `true` in [the `options` parameter](#options-parameter).
 
-The `sanitiser` function returns a string representing the sanitised
-path name.
+The `sanitise` function returns a string representing the sanitised
+path name or the callback, if supplied.
 
-## Examples
+### Examples
 
 Sanitised path name assigment to a variable.
 
 ```js
 const sanitiser = require('sanitiser');
 
-let pathanme = '/some/../arbitrary/./path/*';
+let pathname = '/some/../arbitrary/./path/*';
 let sanitised = sanitiser(pathname);
 
 console.log(sanitsed);
-// Expected output: //some//arbitrary//path/
+// Expected output: /some/arbitrary/path/
 ```
 
 Sanitised path name output via a callback.
@@ -183,13 +187,13 @@ Sanitised path name output via a callback.
 ```js
 const sanitiser = require('sanitiser');
 
-let pathanme = '/some/../arbitrary/./path/*';
+let pathname = '/some/../arbitrary/./path/*';
 
 sanitiser(pathname, (error, result) => {
 	if (error) throw error;
 
 	console.log(result);
-	// Expected output: //some//arbitrary//path/
+	// Expected output: /some/arbitrary/path/
 });
 ```
 
@@ -198,7 +202,7 @@ Sanitised path name with `ignoreRelative` enabled output via a callback.
 ```js
 const sanitiser = require('sanitiser');
 
-let pathanme = '/some/../arbitrary/./path/*';
+let pathname = '/some/../arbitrary/./path/*';
 
 sanitiser(pathname, { ignoreRelative: true }, (error, result) => {
 	if (error) throw error;
@@ -208,10 +212,10 @@ sanitiser(pathname, { ignoreRelative: true }, (error, result) => {
 });
 ```
 
-# Testing
+## Testing
 
 To test the sanitiser, you can issue the below command in your shell,
-given you are in the relevant working directory.
+given your working directory is the root directory of this repository.
 
 ```bash
 npm test
@@ -219,12 +223,12 @@ npm test
 
 This will run a test of the package.
 
-# Support
+## Support
 
 If you have any further questions or you ran into problems, you can
-contact any of this repository's contributors or open an issue on
+contact any of this repository contributors or open an issue on
 [our GitHub repository](https://github.com/kerig-it/sanitiser/issues).
-If you chose the former, you can choose one of the e-mail addresses
-below:
+If you chose the former, you can choose from one of the below e-mail
+addresses:
 
  - <msfninja@pm.me> ([@msfninja](https://github.com/msfninja))
