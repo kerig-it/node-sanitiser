@@ -1,20 +1,24 @@
-// Sanitiser
-//
-// sanitiser is a path name sanitiser.
-//
-// You can find documentation on the usage of this package in the
-// README file in this repository.
-//
-// GitHub: https://github.com/kerig-it/sanitiser
-// npm: https://www.npmjs.com/package/sanitiser
+/*
+ * Sanitiser—A path name sanitiser.
+ *
+ * You can find documentation on the usage of this package in the
+ * README file in the root directory of this repository.
+ *
+ * Website: https://pkg.kerig.ee/sanitiser
+ * GitHub:  https://github.com/kerig-it/sanitiser
+ * npm:     https://www.npmjs.com/package/sanitiser
+ *
+ * Made with ❤️ by Kerig.
+*/
 
+// Node modules (these are added as dependancies in the `package.json`
+// file, so you'd only need to run `npm i` in the terminal to install
+// all dependancies).
+const
+	path = require('path'),
+	truncate = require('truncate-utf8-bytes');
 
-// Node modules (these, among others, are added as dependancies in the
-// `package.json` file, so you'd only need to run `npm i` in the
-// terminal to install all dependancies).
-const truncate = require('truncate-utf8-bytes');
-
-// Sanitiser
+// Sanitises path names.
 const sanitise = (pathname, options, callback) => {
 
 	// Define custom internal error.
@@ -39,11 +43,24 @@ const sanitise = (pathname, options, callback) => {
 			// If there was an error in converting the supplied
 			// `pathname` argument to a string, throw an error.
 			internalError = new Error('\`pathname\` must be of type string.');
+
+			// Is there a callback supplied?
+			if (callback) {
+				// Return the callback with the internal error passed
+				// as an argument.
+				return callback(internalError);
+			}
+
+			// Throw the internal error.
+			throw internalError;
 		}
 	}
 
-	// Truncate `pathname` string to 4096 bytes.
-	pathname = truncate(pathname, 4096);
+	// Is `noTruncation` disabled?
+	if (!options?.noTruncation) {
+		// Truncate `pathname` string to 4096 bytes.
+		pathname = truncate(pathname, 4096);
+	}
 
 	// Define regular expressions for validation.
 	let
@@ -70,30 +87,38 @@ const sanitise = (pathname, options, callback) => {
 	let sanitised = '';
 
 	// Loop over all items of the supplied path name.
-	pathname.split('/').forEach(e => {
+	pathname.split(path.sep).forEach(item => {
 
-		// Validate the item with previously defined regular
-		// expressions and append it to the `sanitised` variable.
+		// Is the item not an empty string?
+		if (item) {
 
-		// Is `ignoreControl` disabled?
-		if (!options?.ignoreControl) {
-			// Replace control characters.
-			e = e.replace(control, replacement);
+			// Validate the item with previously defined regular
+			// expressions and append it to the `sanitised` variable.
+
+			// Is `ignoreControl` disabled?
+			if (!options?.ignoreControl) {
+				// Replace control characters.
+				item = item.replace(control, replacement);
+			}
+
+			// Is `ignoreIllegal` disabled?
+			if (!options?.ignoreIllegal) {
+				// Replace illegal characters.
+				item = item.replace(illegal, replacement);
+			}
+
+			// Is `ignoreRelative` disabled?
+			if (!options?.ignoreRelative) {
+				// Replace attempts to make a relative path.
+				item = item.replace(relative, replacement);
+			}
+
+			// Is the resulting item not an empty string?
+			if (item) {
+				// Append the item with a prefixed directory separator.
+				sanitised += path.sep + item;
+			}
 		}
-
-		// Is `ignoreIllegal` disabled?
-		if (!options?.ignoreIllegal) {
-			// Replace illegal characters.
-			e = e.replace(illegal, replacement);
-		}
-
-		// Is `ignoreRelative` disabled?
-		if (!options?.ignoreRelative) {
-			// Replace attempts to make a relative path.
-			e = e.replace(relative, replacement);
-		}
-
-		sanitised += `/${e}`;
 	});
 
 	// Is there a callback?
