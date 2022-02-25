@@ -3,6 +3,8 @@
 	<br />
 	<span>
 		<a href="https://github.com/kerig-it/node-sanitiser/actions/workflows/codeql-analysis.yml"><img src="https://github.com/kerig-it/node-sanitiser/actions/workflows/codeql-analysis.yml/badge.svg" /></a>
+		<a href="https://github.com/kerig-it/node-sanitiser/actions/workflows/npm-publish.yml"><img src="https://github.com/kerig-it/node-sanitiser/actions/workflows/npm-publish.yml/badge.svg" /></a>
+		<a href="https://github.com/kerig-it/node-sanitiser/actions/workflows/npm-publish-github-packages.yml"><img src="https://github.com/kerig-it/node-sanitiser/actions/workflows/npm-publish-github-packages.yml/badge.svg" /></a>
 	</span>
 </h1>
 
