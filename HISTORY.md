@@ -13,13 +13,13 @@ argument.
 
  - [96b578b](https://github.com/kerig-it/sanitiser/commit/96b578bf1bb9852f1cd5c3611e4ccb9927bb6c0d):
  **Update `index.js`**:
-  * Add `callback` parameter to `sanitise`.
-  * Change the string build-up inside the forEach loop.
-  * Remove `checkOptions`.
+   * Add `callback` parameter to `sanitise`.
+   * Change the string build-up inside the forEach loop.
+   * Remove `checkOptions`.
  - [08693df](https://github.com/kerig-it/sanitiser/commit/08693dfb9c91f3bb94fd831ab9dd051d31256e96):
  **Update `README.md`**:
-  * Add documentation for the new parameter configuration in `sanitise`.
-  * Add more examples.
+   * Add documentation for the new parameter configuration in `sanitise`.
+   * Add more examples.
  - [a887f0f](https://github.com/kerig-it/sanitiser/commit/a887f0f6c07fed8cc2af45fc0b93df854051d75e):
  **Update `test.js`**: [Add package testing].
 
