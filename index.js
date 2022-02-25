@@ -11,7 +11,7 @@
  * Made with ❤️ by Kerig.
 */
 
-// Node modules (these are added as dependancies in the `package.json`
+// Node modules (these are added as dependencies in the `package.json`
 // file, so you'd only need to run `npm i` in the terminal to install
 // all dependancies).
 const
