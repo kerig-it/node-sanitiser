@@ -1,16 +1,18 @@
 {
 	"name": "sanitiser",
 	"version": "0.0.0",
-	"description": "Path name sanitiser.",
-	"main": "index.js",
+	"description": "A path name sanitiser.",
+	"main": "./index.js",
 	"scripts": {
 		"test": "cd test; node test.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kerig-it/sanitiser.git"
+		"url": "git+https://github.com/kerig-it/node-sanitiser.git"
 	},
 	"keywords": [
+		"nodejs",
+		"javascript",
 		"santise",
 		"sanitize",
 		"pathname",
@@ -20,10 +22,11 @@
 	"author": "kerig",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/kerig-it/sanitiser/issues"
+		"url": "https://github.com/kerig-it/node-sanitiser/issues"
 	},
-	"homepage": "https://github.com/kerig-it/sanitiser#readme",
+	"homepage": "https://github.com/kerig-it/node-sanitiser#readme",
 	"dependencies": {
+		"path": "^0.12.7",
 		"truncate-utf8-bytes": "^1.0.2"
 	}
 }
