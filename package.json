@@ -1,5 +1,5 @@
 {
-	"name": "sanitiser",
+	"name": "@kerig-it/sanitiser",
 	"version": "0.0.1",
 	"description": "A path name sanitiser.",
 	"main": "./index.js",
