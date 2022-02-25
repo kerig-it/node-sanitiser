@@ -1,9 +1,14 @@
-<h1 align="center">Sanitiser</h1>
+<h1 align="center">
+	<span>Sanitiser</span>
+	<br />
+	<span>
+		<img src="https://github.com/kerig-it/node-sanitiser/actions/workflows/codeql-analysis.yml/badge.svg" />
+	</span>
+</h1>
 
-`sanitiser` is a path name sanitiser. It's based off of the
-[`sanitize-filename`](https://github.com/parshap/node-sanitize-filename)
-package, but accepts directory separators such as `/` and `\`, making
-it viable to sanitise path names, as well as filenames.
+## Synopsis
+
+`sanitiser` is a path name sanitiser. It's based off of the [`sanitize-filename`](https://github.com/parshap/node-sanitize-filename) package, but accepts directory separators such as `/` and `\`, making it viable to sanitise path names, as well as filenames.
 
 <table>
 	<tr>
@@ -48,23 +53,23 @@ it viable to sanitise path names, as well as filenames.
 
 ## Notice
 
-This repository is licenced under the [MIT licence](https://mit-license.org/).
-For a full picture of your rights and responsibilities, refer to the
-licence file in the root directory of this repository ([`LICENCE`](/LICENCE)).
+This repository is licenced under the [MIT licence](https://mit-license.org/). For a full picture of your rights and responsibilities, refer to the licence file in the root directory of this repository ([`LICENCE`](/LICENCE)).
 
 ## Installing
 
-This package is a [node package](https://nodejs.org/api/packages.html#modules-packages).
-To install it using [npm](https://npmjs.org) (Node package manager),
-issue the below command in your shell, given you are in the relevant
-working directory of your project/repository:
+This package is a [node package](https://nodejs.org/api/packages.html#modules-packages). To install it using [npm](https://npmjs.org) (Node package manager), issue the below command in your shell, given you are in the relevant working directory of your project/repository:
 
+**npm registry:**
 ```bash
-npm i sanitiser
+npm install sanitiser
 ```
 
-This will add `sanitiser` in your dependancies in your [`package.json`](https://nodejs.dev/learn/the-package-json-guide)
-file.
+**GitHub registry:**
+```bash
+npm install @kerig-it/sanitiser@0.0.1
+```
+
+This will add `sanitiser` in your dependencies in your [`package.json`](https://nodejs.dev/learn/the-package-json-guide) file.
 
 ## Usage
 
@@ -79,6 +84,7 @@ sanitiser(pathname[, options, callback]);
    * `ignoreControl` \<boolean\> **Default**: `false`
    * `ignoreIllegal` \<boolean\> **Default**: `false`
    * `ignoreRelative` \<boolean\> **Default**: `false`
+   * `noTruncation` \<boolean\> **Default**: `false`
    * `replacement` \<string\> Replacer in `replace()`
  - `callback` \<Function\>
    * `error` \<boolean\> | \<Error\> `false` if no error
@@ -88,9 +94,7 @@ sanitiser(pathname[, options, callback]);
 
 ### Importing
 
-To use the `sanitiser` package in your project/code, you can add it
-using [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-or [`require`](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
+To use the `sanitiser` package in your project/code, you can add it using [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) or [`require`](https://nodejs.org/en/knowledge/getting-started/what-is-require/).
 
 **`import`**:
 
@@ -131,15 +135,9 @@ const sanitiser = require('sanitiser');
 |`error`|Boolean/Error|Is `false` if there is no error, and an `Error` instance upon errors.|
 |`result`|String|Holds the sanitised path name.|
 
-So, the first parameter is the actual string representing the path
-that you would like to sanitise. The second parameter is an object
-where you can supply specific options to alter the behaviour of the
-`sanitise` function. The third parameter is a callback function with
-two parameters of its own that will be executed once the path name is
-sanitised.
+So, the first parameter is the actual string representing the path that you would like to sanitise. The second parameter is an object where you can supply specific options to alter the behaviour of the `sanitise` function. The third parameter is a callback function with two parameters of its own that will be executed once the path name is sanitised.
 
-Below are all regular expressions that are used in sanitising a path
-name.
+Below are all regular expressions that are used in sanitising a path name.
 
 <b id="control-characters">Control characters:</b>
 
@@ -159,14 +157,9 @@ name.
 /^\.+$/
 ```
 
-Before the regular expression will be applied to the supplied path
-name, though, `pathname` will be [truncated to 4096 bytes](https://unix.stackexchange.com/a/32834)
-with the aid of the [`truncate-utf8-bytes`](https://github.com/parshap/truncate-utf8-bytes)
-package. It is possible to not truncate the path name by supplying the
-`noTruncation` option being set to `true` in [the `options` parameter](#options-parameter).
+Before the regular expression will be applied to the supplied path name, though, `pathname` will be [truncated to 4096 bytes](https://unix.stackexchange.com/a/32834) with the aid of the [`truncate-utf8-bytes`](https://github.com/parshap/truncate-utf8-bytes) package. It is possible to not truncate the path name by supplying the `noTruncation` option being set to `true` in [the `options` parameter](#options-parameter).
 
-The `sanitise` function returns a string representing the sanitised
-path name or the callback, if supplied.
+The `sanitise` function returns a string representing the sanitised path name or the callback, if supplied.
 
 ### Examples
 
@@ -214,8 +207,7 @@ sanitiser(pathname, { ignoreRelative: true }, (error, result) => {
 
 ## Testing
 
-To test the sanitiser, you can issue the below command in your shell,
-given your working directory is the root directory of this repository.
+To test the sanitiser, you can issue the below command in your shell, given your working directory is the root directory of this repository.
 
 ```bash
 npm test
@@ -225,10 +217,6 @@ This will run a test of the package.
 
 ## Support
 
-If you have any further questions or you ran into problems, you can
-contact any of this repository contributors or open an issue on
-[our GitHub repository](https://github.com/kerig-it/sanitiser/issues).
-If you chose the former, you can choose from one of the below e-mail
-addresses:
+If you have any further questions or you ran into problems, you can contact any of this repository contributors or open an issue on [our GitHub repository](https://github.com/kerig-it/sanitiser/issues). If you chose the former, you can choose from one of the below e-mail addresses:
 
  - <msfninja@pm.me> ([@msfninja](https://github.com/msfninja))
