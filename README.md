@@ -23,6 +23,9 @@
 					<a href="#notice">Notice</a>
 				</li>
 				<li>
+					<a href="#benchmarks">Benchmarks</a>
+				</li>
+				<li>
 					<a href="#installing">Installing</a>
 				</li>
 				<li>
@@ -57,6 +60,16 @@
 
 This repository is licenced under the [MIT licence](https://mit-license.org/). For a full picture of your rights and responsibilities, refer to the licence file in the root directory of this repository ([`LICENCE`](/LICENCE)).
 
+## Benchmarks
+
+In the table below you can find the approximate speed of `sanitiser` in each version starting from 0.0.1.
+
+|Version|Speed @ 2.20 GHz|
+|---|---|
+|0.0.1|ca. 1.5 &#181;s per call\*|
+
+\* Definition of a call&#8212;`sanitiser('/path/to/file');` without any options or a callback, where the the supplied string varies.
+
 ## Installing
 
 This package is a [node package](https://nodejs.org/api/packages.html#modules-packages). To install it using [npm](https://npmjs.org) (Node package manager), issue the below command in your shell, given you are in the relevant working directory of your project/repository:
@@ -83,13 +96,14 @@ sanitiser(pathname[, options, callback]);
 
  - `pathname` \<string\> Path
  - `options` \<Object\>
-   * `ignoreControl` \<boolean\> **Default**: `false`
-   * `ignoreIllegal` \<boolean\> **Default**: `false`
-   * `ignoreRelative` \<boolean\> **Default**: `false`
-   * `noTruncation` \<boolean\> **Default**: `false`
-   * `replacement` \<string\> Replacer in `replace()`
+   * `ignoreControl` \<boolean\> Default: `false`
+   * `ignoreIllegal` \<boolean\> Default: `false`
+   * `ignoreRelative` \<boolean\> Default: `false`
+   * `noTruncation` \<boolean\> Default: `false`
+   * `replacement` \<string\> Replacer for illegal characters
+   * `separator` \<string\> Directory separator
  - `callback` \<Function\>
-   * `error` \<boolean\> | \<Error\> `false` if no error
+   * `error` \<Error\>
    * `result` \<string\> Sanitised path
 
 [More information in Sanitising](#sanitising).
@@ -129,6 +143,7 @@ const sanitiser = require('sanitiser');
 |`ignoreRelative`|Boolean|`false`|Defines whether or not to apply [the relative paths regular expression](#relative-paths).|
 |`noTruncation`|Boolean|`false`|Defines whether or not to [truncate the path name to 4096 bytes](https://unix.stackexchange.com/a/32834).|
 |`replacement`|String|Empty string|Holds a string that illegal characters in `pathname` will be replaced with.|
+|`separator`|String|Auto-detection|Holds a string that defines what directory separator is used in the supplied path name. You can set this to `'system'` to use the system's default directory separator.|
 
 <b id="callback-parameter">`callback` parameter</b>
 
@@ -215,7 +230,7 @@ To test the sanitiser, you can issue the below command in your shell, given your
 npm test
 ```
 
-This will run a test of the package.
+This will run a test of the package, logging the original and a sanitised version of all path names from `test/paths`, as well as stats of the process at the end.
 
 ## Support
 
