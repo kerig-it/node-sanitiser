@@ -62,11 +62,11 @@ This repository is licenced under the [MIT licence](https://mit-license.org/). F
 
 ## Benchmarks
 
-In the table below you can find the approximate speed of `sanitiser` in each version starting from 0.0.1.
+In the table below you can find the approximate speed of `sanitiser` in each version starting from 0.0.2.
 
 |Version|Speed @ 2.20 GHz|
 |---|---|
-|0.0.1|ca. 1.5 &#181;s per call\*|
+|0.0.2|ca. 1.5 &#181;s per call\*|
 
 \* Definition of a call&#8212;`sanitiser('/path/to/file');` without any options or a callback, where the the supplied string varies.
 
