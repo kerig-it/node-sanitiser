@@ -4,7 +4,7 @@
 	"description": "A path name sanitiser.",
 	"main": "./index.js",
 	"scripts": {
-		"test": "cd test; node test.js"
+		"test": "cd test; npm ci; node test.js"
 	},
 	"repository": {
 		"type": "git",
