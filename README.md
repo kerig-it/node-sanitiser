@@ -149,7 +149,7 @@ const sanitiser = require('sanitiser');
 
 |Parameter|Type|Description|
 |---|---|---|
-|`error`|Boolean/Error|Is `false` if there is no error, and an `Error` instance upon errors.|
+|`error`|Error|`Error` instances upon errors.|
 |`result`|String|Holds the sanitised path name.|
 
 So, the first parameter is the actual string representing the path that you would like to sanitise. The second parameter is an object where you can supply specific options to alter the behaviour of the `sanitise` function. The third parameter is a callback function with two parameters of its own that will be executed once the path name is sanitised.
