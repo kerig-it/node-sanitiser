@@ -14,9 +14,10 @@
 // Node modules
 const
 	fs = require('fs'),
+	path = require('path'),
 	sanitiser = require('sanitiser');
 
-// "Buffer", represnting a string.
+// A string, representing a "buffer".
 let buffer = '';
 
 // Prints formatted text to the console.
@@ -24,22 +25,26 @@ const print = (...array) => {
 
 	// Column print
 	if (array[0]) {
-		// Formatting variables
-		let ws = '';
+		// Formatting white space
+		let whitespace = '';
 
-		for (var i = 39; i >= 0; i--) {
-			ws += ' ';
+		// 40, because that's just above the longest path name from
+		// `./paths`.
+		let wsCount = 40;
+
+		for (var i = wsCount; i > 0; i--) {
+			whitespace += ' ';
 		}
 		
 		array.forEach(element => {
 
 			// Is the supplied string not a white space character?
-			if (element.match(/[^\s]/)) {
+			if (!element.match(/\s/)) {
 				// Reformat the supplied string.
-				element = (element + ws).slice(0, 40);
+				element = (element + whitespace).slice(0, wsCount);
 			}
 
-			// Append the formatted string to the buffer.
+			// Append the formatted string to the "buffer".
 			buffer += element;
 		});
 	}
@@ -50,8 +55,8 @@ const print = (...array) => {
 	}
 };
 
-// Read the `paths` file.
-let paths = fs.readFile('paths', (error, data) => {
+// Read the `./paths` file.
+let paths = fs.readFile(path.join(__dirname, 'paths'), (error, data) => {
 
 	// Error handling
 	if (error) {
@@ -76,8 +81,8 @@ let paths = fs.readFile('paths', (error, data) => {
 
 	// Loop over all path names.
 	data.toString().split('\n').forEach(pathname => {
-		// Dummy variable assignment.
-		let sanitised = sanitiser(pathname);
+		// Dummy function call.
+		sanitiser(pathname);
 	});
 
 	// Assign the end timestamp.
@@ -95,6 +100,6 @@ let paths = fs.readFile('paths', (error, data) => {
 	print('-----', '\n');
 	print(false, `Looped over ${data.toString().split('\n').length} path names in ${time}.`);
 
-	// Log the buffer to the console.
+	// Log the "buffer" to the console.
 	console.log(buffer);
 });
