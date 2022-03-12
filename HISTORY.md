@@ -112,5 +112,4 @@ This pre-release comes with documentation and an improved more readable code sty
 ## v0.0.0-alpha.0, 2022-02-01, [@msfninja](https://github.com/msfninja)
 
 ### Notes
-
-Initial pre-release.
+Initial pre-release of the `sanitiser` package.
