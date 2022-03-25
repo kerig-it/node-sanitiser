@@ -1,3 +1,7 @@
+<h6 align="right">
+	<span>:uk: English</span>
+</h6>
+
 <h1 align="center">
 	<span>Sanitiser</span>
 	<br />
@@ -49,6 +53,9 @@
 					<a href="#testing">Testing</a>
 				</li>
 				<li>
+					<a href="#dependencies">Dependencies</a>
+				</li>
+				<li>
 					<a href="#support">Support</a>
 				</li>
 			</ul>
@@ -58,21 +65,22 @@
 
 ## Notice
 
-This repository is licenced under the [MIT licence](https://mit-license.org/). For a full picture of your rights and responsibilities, refer to the licence file in the root directory of this repository ([`LICENCE`](/LICENCE)).
+This repository is licenced under the [MIT licence](https://mit-license.org/). For a full picture of your rights and responsibilities, refer to the licence file in this repository's root ([`LICENCE`](/LICENCE)).
 
 ## Benchmarks
 
-In the table below you can find the approximate speed of `sanitiser` in each version starting from 0.0.2.
+In the table below you can find the approximate speed of `sanitiser` in each release starting from [v0.0.2](https://github.com/kerig-it/node-sanitiser/releases/tag/v0.0.2).
 
 |Version|Speed @ 2.20 GHz|
 |---|---|
-|0.0.2|ca. 1.5 &#181;s per call\*|
+|0.0.2|ca. 1.5 &#181;s per call|
 
-\* Definition of a call&#8212;`sanitiser('/path/to/file');` without any options or a callback, where the the supplied string varies.
+> :point_up: **Notice**<br />
+> Definition of a call&#8212;`sanitiser('/path/to/file')` without any options or a callback, where the the supplied string is every entry from [`test/paths`](/test/paths).
 
 ## Installing
 
-This package is a [node package](https://nodejs.org/api/packages.html#modules-packages). To install it using [npm](https://npmjs.org) (Node package manager), issue the below command in your shell, given you are in the relevant working directory of your project/repository:
+This package is a [Node package](https://nodejs.org/api/packages.html#modules-packages). To install it using [npm](https://npmjs.org) (Node package manager), issue the below command in your shell, given you are in the relevant working directory of your project/repository:
 
 **npm registry:**
 ```bash
@@ -81,7 +89,7 @@ npm install sanitiser
 
 **GitHub registry:**
 ```bash
-npm install @kerig-it/sanitiser@0.0.1
+npm install @kerig-it/sanitiser@0.0.2
 ```
 
 This will add `sanitiser` in your dependencies in your [`package.json`](https://nodejs.dev/learn/the-package-json-guide) file.
@@ -91,7 +99,7 @@ This will add `sanitiser` in your dependencies in your [`package.json`](https://
 ### Syntax
 
 ```plain
-sanitiser(pathname[, options, callback]);
+sanitiser(pathname[, options][, callback]);
 ```
 
  - `pathname` \<string\> Path
@@ -231,6 +239,18 @@ npm test
 ```
 
 This will run a test of the package, logging the original and a sanitised version of all path names from `test/paths`, as well as stats of the process at the end.
+
+## Dependencies
+
+This package has a few dependencies, and not all are required for general-purpose (production) usage. In the [`package.json`](/package.json) file you can find the below dependencies of the package:
+
+ - [`truncate-utf8-bytes`](https://github.com/parshap/truncate-utf8-bytes)
+
+And the following development dependencies:
+
+ - [`path`](https://github.com/jinder/path)
+
+Since you will probably not test the package in your production environment, the `path` dependency won't be installed by running `npm ci --only=production` either.
 
 ## Support
 
