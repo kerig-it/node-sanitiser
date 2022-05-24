@@ -1,31 +1,26 @@
 # Security Policy
 
-**Last revised: 2022-03-25**
+_Last updated May 24, 2022_
 
-This is the security policy of [the `sanitiser` repository](https://github.com/kerig-it/sanitiser). Its intend is to inform you on how to report security vulnerabilities that might be discovered within the code of this repository.
+This security policy (the &#8220;Policy&#8221;) constitutes a non-legally binding agreement made between you and Kerig OÜ, doing business as Kerig (&#8220;we,&#8221; &#8220;our&#8221;). The realm of the Policy&#8217;s applicability only extends to the boundaries of [the `node-sanitiser` repository](https://github.com/kerig-it/sanitiser) (the &#8220;Repository&#8221;). The intention thereof is to inform you about ways of reporting security vulnerabilities that collectively damage, harm, or otherwise diminish the safety of any users of software that utilises any code from the Repository or other vulnerabilities that otherwise relate thereto that you discovered within the Repository&#8217;s code.
 
-Before proceeding reporting the vulnerability, though, please find out below what versions of this repository are supported for security updates.
+Prior to reporting any vulnerabilities, we suggest you check the Repository&#8217;s release support for security updates.
 
-# Supported Versions
+## Releases Supported for Security Updates
 
-|Version|Supported|
+Pre-releases not meant for use in production deployment are listed separately.
+
+|Release tag|Supported|
 |---|---|
 |0.0.x (Current)|Yes|
 |0.0.0-beta.x|No|
 |0.0.0-alpha.x|No|
 
-In general, any pre-release will cease support for security updates as soon as its successorial release or pre-release is published. Releases meant for use in production environments are usually always subject for security updates may there be a necessity, unless there's a specific reason for that to not to be the case. A concise explanation of such lack of support, in case present, can be found below.
+Any pre-release will cease support for security updates when its succeeding release or pre-release is published. Releases meant for use in production environments are always subject to security updates if necessary unless there is a specific reason for that not to be the case.<!--  A concise explanation of such lack of support, if present, can be found below. -->
 
-# Reporting a Vulnerability
+## Reporting a Security Vulnerability
 
-You can report a security vulnerability in one way, which is **NOT** filing an issue on GitHub. Report it by sending an e-mail to one of this repository contributors and/or members of the organisation, or just our organisation. You can choose from the below e-mail addresses:
+Withal GitHub issues being certes an excellent medium anent improving our software, we ask you to avoid publicly reporting any and all security vulnerabilities within our open source software. That implies avoiding reporting security vulnerabilities per issue filing on the Repository on GitHub.
 
- - <msfninja@pm.me> ([@msfninja](https://github.com/msfninja), contributor)
- - <sosa@ctemplar.com> ([@milkoholic](https://github.com/milkoholic))
-
-Our organisation's e-mail address&#8212;<kerigit@outlook.com>.
-
-We will get our hands on your denoted security issue as soon as is possible, depending on the severity of the vulnerability. If the vulnerability is of critical severity, we will also make sure to publish the release containing the patch as soon as humanly possible.
-
-Have any further questions or ran into issues? Don't hesitate to [get in touch with us](https://support.kerig.ee).
+Hereby and until further notice, the only appropriate way for you to report security vulnerabilities is by sending an e-mail to <security@kerig.ee>. Depending on the severity level, we will do everything within our capacity to implement the security patch in the next public release. If you have further questions or need support, you can [file your question](https://github.com/kerig-it/node-sanitiser/issues/new/choose) or [search through our FAQ](https://support.kerig.ee).
 
